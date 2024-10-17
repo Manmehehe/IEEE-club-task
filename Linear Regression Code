@@ -1,0 +1,58 @@
+class LinearRegressionBasic:
+    def __init__(self, learning_rate=0.01, n_iterations=1000):
+        self.learning_rate = learning_rate  # Learning rate for gradient descent
+        self.n_iterations = n_iterations  # Number of iterations for training
+        self.m = 0  # Slope (initialized to 0)
+        self.b = 0  # Intercept (initialized to 0)
+
+    # Method to fit the model using gradient descent
+    def fit(self, X, Y):
+        n = len(X)  # Number of data points
+        for _ in range(self.n_iterations):
+            dm = 0  # Gradient for slope
+            db = 0  # Gradient for intercept
+            for i in range(n):
+                # Predicted salary (Y_pred) for the i-th data point
+                Y_pred = self.m * X[i] + self.b
+                # Calculate gradients based on the error
+                dm += -2 * X[i] * (Y[i] - Y_pred)
+                db += -2 * (Y[i] - Y_pred)
+            # Update slope and intercept
+            self.m -= (dm / n) * self.learning_rate
+            self.b -= (db / n) * self.learning_rate
+
+    # Method to make predictions
+    def predict(self, X):
+        return [self.m * x + self.b for x in X]
+
+# Function to take input from the user
+def get_user_input():
+    n = int(input("Enter the number of employees: "))  # Number of employees (data points)
+    X = []
+    Y = []
+    print("Enter the years of experience and salary--->\n")
+
+    for i in range(n):
+        experience = float(input(f"Experience of Employee {i+1}(in years):"))
+        salary = float(input(f"salary of Employee {i+1}: "))
+        X.append(experience)
+        Y.append(salary)
+
+    return X, Y
+
+if __name__ == "__main__":
+    # Get user input for years of experience and salaries
+    X, Y = get_user_input()
+
+    # Create and train the model
+    model = LinearRegressionBasic(learning_rate=0.01, n_iterations=1000)
+    model.fit(X, Y)
+
+    # Make predictions
+    predictions = model.predict(X)
+    print("Predicted salaries:", predictions)
+
+    # Optionally, predict salary for new years of experience input
+    new_experience = float(input("Enter years of experience to predict salary: "))
+    predicted_salary = model.predict([new_experience])
+    print(f"Predicted salary for {new_experience} years of experience: Rs. {predicted_salary[0]:.2f}")
