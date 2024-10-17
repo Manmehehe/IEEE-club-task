@@ -1,5 +1,36 @@
+Section 1:
+1. logistic regression model
+2.
+
+def fibonacci(n):
+    # Initialize the first two terms
+    a, b = 0, 1
+    terms = []
+    
+    for _ in range(n):
+        terms.append(a)
+        # Update the values for the next iteration
+        a, b = b, a + b
+        
+    return terms
+
+# Get user input
+n = int(input("Enter the number of terms to generate in the Fibonacci sequence: "))
+fibonacci_terms = fibonacci(n)
+
+# Print the Fibonacci sequence
+print("The first", n, "terms of the Fibonacci sequence are:")
+print(fibonacci_terms)
+
+
+
+3. queue
+4. varialble_1
+5. merge sort
+
 https://docs.google.com/document/d/1Sgv_v8e4OWg40b1g66TVyBYFQFm_6_QAIHsIJsi1ZA0/edit?usp=sharing (this is a google dox file of my tasks including poster and summary of the research paper)
-*THIS IS REFFERED FROM CHATGPT AS WELL*
+
+
 This code implements a basic linear regression model from scratch using Python, without relying on machine learning libraries like scikit-learn. The goal is to predict salaries based on years of experience using gradient descent for optimization. Here's a breakdown of the approach:
 
 Class: LinearRegressionBasic
