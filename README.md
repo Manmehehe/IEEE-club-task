@@ -14,11 +14,11 @@ def fibonacci(n):
         
     return terms
 
-# Get user input
+#d Get user input
 n = int(input("Enter the number of terms to generate in the Fibonacci sequence: "))
 fibonacci_terms = fibonacci(n)
 
-# Print the Fibonacci sequence
+#d Print the Fibonacci sequence
 print("The first", n, "terms of the Fibonacci sequence are:")
 print(fibonacci_terms)
 
